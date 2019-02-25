@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
+import moment from 'moment';
 
 class Todo extends Component {
   constructor(props) {
@@ -100,7 +101,7 @@ class Todo extends Component {
                   <tr>
                     <td>{ i + 1 }</td>
                     <td>{ todo.text }</td>
-                    <td>{ todo.created_at }</td>
+                    <td>{ moment(todo.created_at).fromNow() }</td>
                     <td>
                       <button class="btn btn-sm btn-danger" onClick={(e) => this.deleteTodo(e, i)}>Delete</button>
                     </td>
