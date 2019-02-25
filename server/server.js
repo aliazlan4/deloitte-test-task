@@ -1,4 +1,7 @@
 const express = require('express');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const passport = require('./passport');
 const fs = require('fs');
 const historyApiFallback = require('connect-history-api-fallback');
 const mongoose = require('mongoose');
@@ -22,6 +25,16 @@ mongoose.connect(isDev ? config.db_dev : config.db);
 mongoose.Promise = global.Promise;
 
 const app = express();
+app.use(
+  session({
+    secret: 'a-random-string-for-security',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

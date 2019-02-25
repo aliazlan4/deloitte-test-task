@@ -59,7 +59,7 @@ class Signup extends Component {
         }).then(res => res.json())
         .then(response => {
           if (response.status) {
-            console.log('Signed up');
+            window.location = '/login';
           } else {
             console.log('Not signed up');
 

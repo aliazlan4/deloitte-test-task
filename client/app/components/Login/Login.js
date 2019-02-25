@@ -59,7 +59,7 @@ class Login extends Component {
         }).then(res => res.json())
         .then(response => {
           if (response.status) {
-            console.log('Logged In');
+            window.location = '/todo';
           } else {
             this.setState({
               error_msg: response.message,

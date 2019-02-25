@@ -36,26 +36,45 @@ module.exports =  {
     },
 
     async login(req, res, next) {
-      const {username} = req.body;
-      const {password} = req.body;
 
-      const user = await User.findOne({username: username});
+      res.json({
+        status: true,
+        message: 'Logged In Successfully'
+      });
 
-      if (!user) {
+    },
+
+    async logout(req, res, next) {
+      if (req.user) {
+        req.logout();
         res.json({
-          status: false,
-          message: 'User deosnt exist'
-        });
-      } else if (!user.validPassword(password)) {
-        res.json({
-          status: false,
-          message: 'Incorrect Password'
+          status: true,
+          message: 'Logged Out Successfully'
         });
       } else {
         res.json({
-          status: true,
-          message: 'Logged In Successfully'
+          status: false,
+          message: 'No user to logout'
         });
       }
+
+    },
+
+    async getUser(req, res, next) {
+      if (req.user) {
+        let user = req.user;
+        delete user.password;
+        res.json({
+          status: true,
+          message: 'User is Logged In',
+          user: user
+        });
+      } else {
+        res.json({
+          status: false,
+          message: 'User is not Logged In'
+        });
+      }
+
     },
 }
