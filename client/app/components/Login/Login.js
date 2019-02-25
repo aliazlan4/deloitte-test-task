@@ -56,7 +56,16 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password,
           })
-        }).then(res => res.json())
+        }).then(res => {
+          if (res.status == 401) {
+            this.setState({
+              error_msg: 'Username or Password Incorrect',
+              show_error: true,
+            });
+          } else {
+            return res.json();
+          }
+        })
         .then(response => {
           if (response.status) {
             localStorage.setItem('user', response.user);
