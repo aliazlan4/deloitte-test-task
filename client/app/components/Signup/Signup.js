@@ -61,8 +61,6 @@ class Signup extends Component {
           if (response.status) {
             window.location = '/login';
           } else {
-            console.log('Not signed up');
-
             this.setState({
               error_msg: response.message,
               show_error: true,
