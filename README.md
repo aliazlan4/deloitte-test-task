@@ -44,6 +44,7 @@ If I would have more spare time then I would have added following features to th
  - Todo browser pushup reminders
  - Google / Facebook Authentication
  - Unit tests
+ - Code Comments
 
 ### Credits
 To make a better application in a less time I have used a React.JS boilerplate for the application. Also, I have used Passport.js authentication strategy from their official examples.
