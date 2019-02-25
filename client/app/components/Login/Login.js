@@ -59,6 +59,7 @@ class Login extends Component {
         }).then(res => res.json())
         .then(response => {
           if (response.status) {
+            localStorage.setItem('user', response.user);
             window.location = '/todo';
           } else {
             this.setState({

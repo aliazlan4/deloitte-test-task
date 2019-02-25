@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import {
   BrowserRouter as Router,
   Route,
   Link,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom'
 
 import App from './components/App/App';
@@ -20,6 +21,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/styles.scss';
 import './styles/style.css';
 
+const ProtectedRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    localStorage.getItem('user')
+      ? <Component {...props} />
+      : <Redirect to={{
+          pathname: '/login',
+          state: { from: props.location }
+        }} />
+  )} />
+);
+
 render((
   <Router>
     <App>
@@ -27,7 +39,7 @@ render((
         <Route exact path="/" component={Home}/>
         <Route path="/signup" component={Signup}/>
         <Route path="/login" component={Login}/>
-        <Route path="/todo" component={Todo}/>
+        <ProtectedRoute path="/todo" component={Todo}/>
         <Route component={NotFound}/>
       </Switch>
     </App>

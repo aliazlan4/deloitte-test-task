@@ -18,11 +18,12 @@ class Todo extends Component {
   componentDidMount() {
     fetch('/api/todos')
       .then(res => res.json())
-      .then(json => {
-        console.log('todos:', json);
-        this.setState({
-          todos: json
-        });
+      .then(response => {
+        if (response.status) {
+          this.setState({
+            todos: response.todos
+          });
+        }
       });
   }
 
@@ -43,9 +44,9 @@ class Todo extends Component {
           new_todo: new_todo
         })
       }).then(res => res.json())
-      .then(json => {
+      .then(response => {
         let data = this.state.todos;
-        data.push(json);
+        data.push(response.todo);
 
         this.setState({
           todos: data

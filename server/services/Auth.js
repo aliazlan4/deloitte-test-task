@@ -39,7 +39,8 @@ module.exports =  {
 
       res.json({
         status: true,
-        message: 'Logged In Successfully'
+        message: 'Logged In Successfully',
+        user: req.user._id
       });
 
     },
