@@ -12,6 +12,7 @@ It is an Online ToDo App that supports user signup, login and todos listing, cre
 Follow the below given commands to start the application:
 ```sh
 $ git clone "https://github.com/aliazlan4/deloitte-test-task"
+$ cd deloitte-test-task
 $ docker-compose up -d
 ```
 
