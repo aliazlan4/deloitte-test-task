@@ -27,7 +27,7 @@ This application is built with proper security considerations. Some of them are 
  - Server side form validations
  - User authentication and authenticated sessions with Passport.js
 
-Following things are required if this production is to be deploy in production environment:
+Following things are required if this application is to be deploy in production environment:
  - MongoDB port should be restricted outside access
  - Application should be served on HTTPS as the passwords are being passed in plain-text to the api where they are hashed before storing in database or checking for login.
 
