@@ -1,7 +1,7 @@
 # Deloitte - Online Todo List Test Task
 
 
-It is an Online ToDo App that supports user signup, login and todos listing, creations and deletion. All the date in the application is persisted in a MongoDB app. Application is dockerized for easy setup. Following is the tech stack of the application.
+It is an Online ToDo App that supports user signup, login and todos listing, creations and deletion. All the data in the application is persisted in a MongoDB app. Application is dockerized for easy setup. Following is the tech stack of the application.
 
   - NodeJS
   - Express.js
